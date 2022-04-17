@@ -1,0 +1,43 @@
+<html>
+Ball bouncing
+
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#54b9eb"></div>
+
+<script>
+
+var velocityX = 2 + 2*Math.random();
+var velocityY = 1 + 1*Math.random();
+var positionX = 0;
+var positionY = 0;
+var size = 50;
+var ball = document.getElementById('ball');
+
+// YOUR CODE 
+// ----------------
+
+function updatePosition(){
+  if (positionX > 600 || positionX < 0) {
+    velocityX = velocityX * -1;
+  }
+  if (positionY > 600 || positionY <0 ){
+    velocityY = velocityY *-1;
+  }
+
+  positionX = positionX + velocityX;
+  ball.style.left = positionX;
+  positionY = positionY + velocityY;
+  ball.style.top = positionY;
+  ball.style.width = 20 + 0.5*Math.pow((Math.pow(positionX,2) + Math.pow(positionY,2)),0.5) + "px";
+  ball.style.height = 20 + 0.5*Math.pow((Math.pow(positionX,2) + Math.pow(positionY,2)),0.5) + "px";
+}
+setInterval(updatePosition,10);
+
+</script>
