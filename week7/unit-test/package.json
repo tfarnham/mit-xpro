@@ -1,0 +1,14 @@
+{
+  "name": "greeting",
+  "version": "1.0.0",
+  "description": "Unit Testing Activity",
+  "main": "hello.js",
+  "dependencies": {
+    "course-utilities": "^1.0.0",
+    "jest": "^26.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  }
+}
