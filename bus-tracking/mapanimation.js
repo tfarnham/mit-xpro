@@ -25,27 +25,87 @@ let map = new mapboxgl.Map({
   zoom: 14,
 });
 
+var allStopMarkers = [];
 // TODO: add a marker to the map at the first coordinates in the array busStops. The marker variable should be named "marker"
-var marker = new mapboxgl.Marker()
-.setLngLat([-71.093729, 42.359244])
-.addTo(map);
+
 
 // counter here represents the index of the current bus stop
 let counter = 0;
 function move() {
-  // TODO: move the marker on the map every 1000ms. Use the function marker.setLngLat() to update the marker coordinates
-  // Use counter to access bus stops in the array busStops
-  // Make sure you call move() after you increment the counter.
-  setTimeout(() => {
-    if (counter >= busStops.length) return;
-    marker.setLngLat(busStops[counter]);
-    counter++;
-    move();
-  },1000)  
+  if (allStopMarkers.length == 0){
+  for (let i =0; i < busStops.length; i ++){
+  var marker = new mapboxgl.Marker()
+  .setLngLat(busStops[i])
+  .addTo(map);
+  allStopMarkers.push(marker);
+  }
+}
+else {
+  for (let i =0; i < allStopMarkers.length; i ++){
+    allStopMarkers[i].remove();
+}
+  allStopMarkers = [];
+}
+}
+
+var allBusMarkers = [];
+// Get bus locations every 15sec
+async function run(){
+    // get bus data    
+    const busses = await getBusLocations();
+    console.log(new Date());
+    console.log(busses);
+
+  // Reset all markers
+  if (allBusMarkers!==null) {
+    for (var i = allBusMarkers.length - 1; i >= 0; i--) {
+      allBusMarkers[i].remove();
+    }
 
 }
-move();
-// Do not edit code past this point
-if (typeof module !== 'undefined') {
-  module.exports = { move };
+
+  for (let i =0; i<busses.length; i++){
+
+    const el = document.createElement('div');
+    if(busses[i].attributes.direction_id == 0){
+      // Red busses go North
+    el.className = 'markerRed';
+    }
+    else {
+      // Blue busses go South
+    el.className = 'markerBlue';
+
+    }
+
+    var marker = new mapboxgl.Marker(el)
+    .setLngLat([busses[i].attributes.longitude, busses[i].attributes.latitude])
+    .setPopup(new mapboxgl.Popup().setHTML(formatPopup(busses[i].attributes.direction_id,busses[i].attributes.occupancy_status)))
+    .addTo(map);
+    allBusMarkers.push(marker);
+    console.log("Marker: ", marker);
+    //marker.remove()
+  }
+  
+    // timer
+    setTimeout(run, 15000);
 }
+
+function formatPopup(direction, availabilty){
+  let dirText = "Unknown";
+  if (direction == 0 ){
+     dirText = "North";
+  }
+  else {
+     dirText = "South";
+  }
+  return "Heading: <b>" + dirText + "</b><br>" + availabilty;
+}
+// Request bus data from MBTA
+async function getBusLocations(){
+    const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
+    const response = await fetch(url);
+    const json     = await response.json();
+    return json.data;
+}
+
+run();
