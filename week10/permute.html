@@ -1,0 +1,44 @@
+<html>
+<script>
+var allPerms = [];
+function permute(target,sofar){
+	for(let i=0; i < target.length; i++){
+		pick=target[i];
+		console.log("Pick: ",pick);
+		sofar += pick;
+		newtarget = target.split(target[i]).join("");
+		//permute(newtarget);
+		//for(let i=0; i < newtarget.length; i++){
+		//	console.log(":",newtarget[i]);
+		//}
+		if (newtarget.length > 0){
+			permute(newtarget,sofar);
+		}
+		else {
+			allPerms.push(sofar);
+			sofar = "";
+		}
+		console.log("NewTarget: ",newtarget);
+	}
+}
+
+//permute('abc','');
+
+function permuteB(string){
+	let len = string.length;
+	if (len === 1) return string;
+	let pick = "";
+	let permutations = [];
+	for (let i =0; i <len; i++){
+		pick = string[i];
+		var remainder = string.slice(0,i)+string.slice(i+1,len);
+		for (var perm of permuteB(remainder)){
+			permutations.push(pick + perm)
+		}
+	}
+	return permutations;
+}
+console.log(permuteB('abcd'));
+</script>
+
+ABC
