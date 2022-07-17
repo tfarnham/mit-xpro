@@ -6,20 +6,20 @@ const App = () => {
         // [1,3,4]
         let newState = state.filter((element, stateIndex) => {
             console.log("Check stateIndex: ", stateIndex," index: ",index)
-            return !(index == stateIndex)
+            return !(element == index)
         });
         console.log("state: ",state);
         setState(newState)
     }
     let list = state.map((item, index) => {
-        return <MyButton onClick={() => handler(index)} key={index}></MyButton>
+        return <MyButton onClick={() => handler(item)} key={index}></MyButton>
     })
     return <div>{list}</div>
 };
 
 const MyButton = ({ onClick }) => {
     let { Button } = ReactBootstrap
-    return <Button onClick={onClick}>Click Me5</Button>
+    return <Button onClick={onClick}>Click Me6</Button>
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
