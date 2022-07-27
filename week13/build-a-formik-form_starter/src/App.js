@@ -1,15 +1,36 @@
 import React from "react";
-// TODO: import useFormik from formik library
+import {useFormik} from 'formik';
 
 function App() {
-  // TODO: add a const called formik assigned to useFormik()
+  
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+  onSubmit: values => {
+    console.log('form:', values);
+  },
+  validate: values => {
+    let errors = {};
+    if(!values.email) errors.email = "Required";
+    if(!values.password) errors.password = "RequiredP";
+    return errors;
 
+  }
+  })
+  
   return (
     <div>
-      <p>
-        The app is ready! You can proceed with the task instructions. TODO:
-        build you form here.
-      </p>
+      <form onSubmit={formik.handleSubmit}>
+        <div>Email</div>
+        <input id="emailField" name="email" type="text" onChange={formik.handleChange} value= {formik.values.email}></input>
+        {formik.errors.email ? <div style={{color:'red'}} id="emailError">{formik.errors.email}</div>:null}
+        <div>Password</div>
+        <input id="pswField" name="password" type="text" onChange={formik.handleChange} value = {formik.values.password}></input>
+        {formik.errors.password ? <div style={{color:'red'}} id="pswError">{formik.errors.password}</div>:null}
+        <div></div><button id="submitBtn" type="submit">Submit</button>
+      </form>
     </div>
   );
 }
