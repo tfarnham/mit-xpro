@@ -9,12 +9,16 @@ function App() {
       password: ''
     },
   onSubmit: values => {
-    console.log('form:', values);
+    
+  //console.log('form:', values);
+  alert('Login successful');
   },
   validate: values => {
     let errors = {};
-    if(!values.email) errors.email = "Required";
-    if(!values.password) errors.password = "RequiredP";
+    let emailRegex = new RegExp('[A-Za-z0-9._%+-]+@+[A-Za-z0-9.-]+\.+[A-Za-z]{2,}');
+    if(!values.email) errors.email = "Field required";
+    if(!emailRegex.test(values.email)) errors.email = "Username should be an email";
+    if(!values.password) errors.password = "Field required";
     return errors;
 
   }
