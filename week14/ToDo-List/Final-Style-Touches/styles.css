@@ -12,16 +12,23 @@ code {
     monospace;
 }
 
+h1 {
+  background: #209cee;
+  color: white;
+  padding: 10px 0px 0px 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .app {
   background: #209cee;
-  padding: 30px;
+  padding: 20px 30px 30px 30px;
   height: 100vh;
 }
 
 .todo-list{
   background: #e8e8e8;
   border-radius: 4px;
-  padding: 5px;
+  padding: 0px 5px 5px 5px;
   max-width: 400px;
 }
 
@@ -36,7 +43,10 @@ code {
   align-items: center;
   justify-content: space-between;
 }
-
+.todo:hover {
+  text-decoration: line-through;
+  color: lightgray;
+}
 .input{
   width: 100%;
   box-sizing: border-box;
