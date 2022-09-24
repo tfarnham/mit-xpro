@@ -1,5 +1,5 @@
 {
-  "name": "cart-db",
+  "name": "restaurants",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -20,7 +20,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "56121115-5be5-4d79-944c-50bc04de759d"
+    "uuid": "d50dccb3-fcae-4df2-b5dd-243283dd303f"
   },
   "engines": {
     "node": ">=14.19.1 <=16.x.x",
