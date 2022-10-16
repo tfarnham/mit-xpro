@@ -1,3 +1,82 @@
 {
-  "users": []
+  "users": [
+    {
+      "name": "Shawn Howe",
+      "dob": "1954-9-24",
+      "email": "Shawn.Howe10@yahoo.com",
+      "username": "Shawn.Howe",
+      "password": "VphEqoXS4qVaPZr",
+      "phone": "1-965-437-0781",
+      "streetaddress": "610 Cassandre View",
+      "citystatezip": "Lake Lue, ME 04960-1903",
+      "latitude": "-32.4825",
+      "longitude": "-86.2792",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/nerrsoft/128.jpg"
+    },
+    {
+      "name": "Dr. Tabitha Feeney",
+      "dob": "1960-11-15",
+      "email": "Tabitha_Feeney@yahoo.com",
+      "username": "Tabitha_Feeney52",
+      "password": "3dl68GljUGNqdNV",
+      "phone": "833-482-0936",
+      "streetaddress": "76073 Albertha Loop",
+      "citystatezip": "West Kennithside, CO 00951",
+      "latitude": "89.7155",
+      "longitude": "-112.4140",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/thierrykoblentz/128.jpg"
+    },
+    {
+      "name": "Tomas Feest IV",
+      "dob": "1955-2-1",
+      "email": "Tomas.Feest47@hotmail.com",
+      "username": "Tomas24",
+      "password": "toEIb63wbd73Ao1",
+      "phone": "453-511-7017",
+      "streetaddress": "6843 Brakus Pass",
+      "citystatezip": "South Amparo, WV 87288",
+      "latitude": "-62.7050",
+      "longitude": "88.7538",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kalmerrautam/128.jpg"
+    },
+    {
+      "name": "Kaci Mosciski",
+      "dob": "1971-5-20",
+      "email": "Kaci72@gmail.com",
+      "username": "Kaci.Mosciski68",
+      "password": "1NSiTHXDhehRUIy",
+      "phone": "825.896.4385",
+      "streetaddress": "530 Corrine Mission",
+      "citystatezip": "Larsonborough, KS 97751-2657",
+      "latitude": "-31.0034",
+      "longitude": "-87.1260",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/isaacfifth/128.jpg"
+    },
+    {
+      "name": "Imogene Blanda",
+      "dob": "1944-2-16",
+      "email": "Imogene84@gmail.com",
+      "username": "Imogene_Blanda",
+      "password": "kejxzCMXKdkI_zQ",
+      "phone": "(632) 324-8349 x68546",
+      "streetaddress": "297 King Freeway",
+      "citystatezip": "Timothyton, NV 74270",
+      "latitude": "56.8282",
+      "longitude": "178.3919",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/alevizio/128.jpg"
+    },
+    {
+      "name": "Destin Gusikowski",
+      "dob": "1985-11-22",
+      "email": "Destin43@yahoo.com",
+      "username": "Destin.Gusikowski",
+      "password": "nmGE1IGOc_om7vL",
+      "phone": "1-988-715-2103 x605",
+      "streetaddress": "226 Bailey Place",
+      "citystatezip": "Claymouth, WV 62610",
+      "latitude": "-44.7990",
+      "longitude": "-73.3734",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg"
+    }
+  ]
 }
