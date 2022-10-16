@@ -4,9 +4,13 @@ const low       = require('lowdb');
 const fs        = require('lowdb/adapters/FileSync');
 const adapter   = new fs('db.json');
 const db        = low(adapter);
+const faker     = require('faker');
 
 // initialize the data store
 db.defaults({ users:[]}).write();
+
+// setup serving static pages
+app.use(express.static('public'));
 
 // data parser - used to parse post data
 var bodyParser = require('body-parser');
