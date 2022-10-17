@@ -23,7 +23,8 @@
     const citystatezip      = faker.address.city() + ", " + faker.address.stateAbbr() + " " + faker.address.zipCode();
     const latitude          = faker.address.latitude();
     const longitude         = faker.address.longitude();
-    const avatar            = faker.internet.avatar();
+    //const avatar            = faker.image.avatar();
+    const avatar            = faker.image.animals(100,100,true);
     const dob               = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
 
     const user = { name, dob, email, username, password, phone, streetaddress, citystatezip, latitude, longitude, avatar};
