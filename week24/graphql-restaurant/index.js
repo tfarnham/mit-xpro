@@ -117,6 +117,13 @@ var root = {
   },
   editrestaurant: ({ id, ...restaurant }) => {
     // Your code goes here
+    if (restaurants[id]) {
+      restaurants[id] = {
+        ...restaurants[id],
+        ...restaurant,
+      };
+      return restaurants[id];
+    }
   },
 };
 var app = express();
@@ -128,7 +135,7 @@ app.use(
     graphiql: true,
   })
 );
-var port = 5503;
-app.listen(5503, () => console.log("Running Graphql on Port:" + port));
+var port = 5500;
+app.listen(5500, () => console.log("Running Graphql on Port:" + port));
 
 //export default root;
