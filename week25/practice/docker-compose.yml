@@ -1,0 +1,15 @@
+version: '2'
+services:
+  client:
+    # Step 5.1 - Point build step to the client directory
+    build: './'
+    ports:
+      # Step 5.2 - Add the port that the client application runs on - (port:port).
+      - '3000:3000'
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'

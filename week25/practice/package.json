@@ -1,0 +1,16 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "playing around with redis",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tfarnhamapp@gmail.com",
+  "license": "MIT"
+}
