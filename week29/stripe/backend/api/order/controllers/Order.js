@@ -5,8 +5,9 @@
  * @description: A set of functions called "actions" for managing `Order`.
  */
 // note that this needs to be a "private" key from STRIPE
+// ADD PRIVATE KEY HERE
 const stripe = require("stripe")(
-  "sk_test_51MDzPwCwgDrZzGKjd5fXFbzTDpSRUyDODYfY5qATTJ3dFvfkf6IlCTKG1XpoB3IdZVW6ZIrKmzRkCCJRD2dOfk0900Vsd4IyBb"
+  "sk_test_"
 );
 module.exports = {
   /**
