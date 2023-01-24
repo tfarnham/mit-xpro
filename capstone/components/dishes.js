@@ -58,11 +58,11 @@ const GET_RESTAURANT_DISHES = gql`
                   src={`http://localhost:1337${res.image.url}`}
                 />
                 <CardBody>
-                  <CardTitle>{res.name}</CardTitle>
+                  <CardTitle>{res.name}, ${res.price}</CardTitle>
                   <CardText>{res.description}</CardText>
                 </CardBody>
                 <div className="card-footer">
-                  <Button color="info"
+                  <Button 
                     outline
                     color="primary"
                     onClick = {()=> addItem(res)}

@@ -4,16 +4,41 @@ import AppContext from "../components/context";
 import Home from "./index"
 import Layout from "../components/layout"
 import Cookie from "js-cookie"
-
+import axios from 'axios';
 
 function MyApp(props){
   var {cart,addItem,removeItem, user, setUser} = useContext(AppContext)
   const [state,setState] = useState({cart:cart});
   const { Component, pageProps } = props;
   
+  // check if there's a JWT set, and if so, get user data from Strapi
+  let cookietoken = Cookie.get("token");
+  let username = Cookie.get("username");
+
+  console.log("cookietoken: ", cookietoken);
+  
+  if(cookietoken && !user) {
+
+    // Request API.
+    axios
+      .get('http://localhost:1337/users/me', {
+        headers: {
+          Authorization: `Bearer ${cookietoken}`,
+        },
+      })
+      .then(response => {
+        // Handle success.
+        console.log('Token Data: ', response.data);
+      })
+      .catch(error => {
+        // Handle error.
+        console.log('An error occurred:', error.response);
+      });
+  }
   
   setUser = (user) => {
-    setState({ user });
+    //setState({ user });
+    setState({cart: cart, user: user});
   };
   addItem = (item) => {
     let { items } = state.cart;

@@ -5,10 +5,15 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
+import Cookie from "js-cookie";
+import { logout }from "./auth";
 
 const Layout = (props) => {
-const title = "Welcome to Nextjs";
-const {user} = useContext(AppContext);
+const title = "Browse Ojai Restaurants";
+const appContext = useContext(AppContext);
+
+let username = Cookie.get("username");
+//console.log("layout username: ", username);
   return (
     <div>
       <Head>
@@ -42,8 +47,8 @@ const {user} = useContext(AppContext);
             </Link>
           </NavItem>
           <NavItem className="ml-auto">
-            {user ? (
-              <h5>{user.username}</h5>
+            {username ? (
+              <h5>Welcome {username}!</h5>
             ) : (
               <Link href="/register">
                 <a className="nav-link"> Sign up</a>
@@ -51,13 +56,13 @@ const {user} = useContext(AppContext);
             )}
           </NavItem>
           <NavItem>
-            {user ? (
+            {username ? (
               <Link href="/">
                 <a
                   className="nav-link"
                   onClick={() => {
                     logout();
-                    setUser(null);
+                    appContext.setUser(null);
                   }}
                 >
                   Logout

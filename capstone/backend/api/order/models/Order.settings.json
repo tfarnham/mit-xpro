@@ -38,6 +38,9 @@
     },
     "user": {
       "type": "string"
+    },
+    "ordertime": {
+      "type": "date"
     }
   }
 }

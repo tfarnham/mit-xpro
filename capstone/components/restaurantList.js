@@ -42,7 +42,7 @@ let searchQuery = data.restaurants.filter((res) =>{
     return res.name.toLowerCase().includes(props.search)
   })
 
-let restId = searchQuery[0].id
+//let restId = searchQuery[0].id
  
 // definet renderer for Dishes
   const renderDishes = (restaurantID) => {

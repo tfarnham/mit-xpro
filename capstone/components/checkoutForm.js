@@ -37,8 +37,11 @@ function CheckoutForm() {
     // get token back from stripe to process credit card
     const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 
+    console.log("form dishes:", appContext.cart.items);
+    //let cookietoken = Cookie.get("token");
     const token = await stripe.createToken(cardElement);
     const userToken = Cookies.get("token");
+    let ordertime = new Date();
     const response = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: userToken && { Authorization: `Bearer ${userToken}` },
@@ -49,12 +52,17 @@ function CheckoutForm() {
         city: data.city,
         state: data.state,
         token: token.token.id,
+        ordertime: ordertime
       }),
     });
 
     if (!response.ok) {
       setError(response.statusText);
-      console.log("SUCCESS")
+      console.log("not SUCCESS")
+    }
+    else {
+      console.log("OK response",response.statusText);
+      setError("Your order was placed!");
     }
 
     // OTHER stripe methods you can use depending on app
