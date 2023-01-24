@@ -26,23 +26,13 @@ const Register = () => {
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">
             <div className="header">
-              <img src="loginimage.png" width="100px"/>
+              <img src="loginimage.png" width="150px"/>
             </div>
             <section className="wrapper">
-              {Object.entries(error).length !== 0 &&
-                error.constructor === Object &&
-                error.message.map((error) => {
-                  return (
-                    <div
-                      key={error.messages[0].id}
-                      style={{ marginBottom: 10 }}
-                    >
-                      <small style={{ color: "red" }}>
-                        {error.messages[0].message}
+            <small style={{ color: "red" }}>
+              {console.log("error is: ", error)}
+                        {Object.keys(error).length > 0 ? "Error, please try again" : ""}
                       </small>
-                    </div>
-                  );
-                })}
               <Form>
                 <fieldset disabled={loading}>
                   <FormGroup>
@@ -103,6 +93,7 @@ const Register = () => {
                           })
                           .catch((error) => {
                             console.log(`error in register: ${error}`)
+                            setError(error);
                             //setError(error.response.data);
                             setLoading(false);
                           });

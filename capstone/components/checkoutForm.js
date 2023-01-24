@@ -19,6 +19,9 @@ function CheckoutForm() {
   const elements = useElements();
   const appContext = useContext(AppContext);
 
+  let isDisabledValue = (data.address && data.city && data.state) ? false : true ;
+  console.log("isDisabledValue", isDisabledValue);
+
   function onChange(e) {
     // set the key = to the name property equal to the value typed
     const updateItem = (data[e.target.name] = e.target.value);
@@ -42,6 +45,8 @@ function CheckoutForm() {
     const token = await stripe.createToken(cardElement);
     const userToken = Cookies.get("token");
     let ordertime = new Date();
+    console.log("response token", token);
+    if(!token.error.message) {
     const response = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: userToken && { Authorization: `Bearer ${userToken}` },
@@ -64,7 +69,11 @@ function CheckoutForm() {
       console.log("OK response",response.statusText);
       setError("Your order was placed!");
     }
-
+  }
+  else {
+    // token failed.
+    setError(token.error.message);
+  }
     // OTHER stripe methods you can use depending on app
     // // or createPaymentMethod - https://stripe.com/docs/js/payment_intents/create_payment_method
     // stripe.createPaymentMethod({
@@ -101,7 +110,7 @@ function CheckoutForm() {
         </div>
       </FormGroup>
 
-      <CardSection data={data} stripeError={error} submitOrder={submitOrder} />
+      <CardSection isDisabled = {isDisabledValue} data={data} stripeError={error} submitOrder={submitOrder} />
 
       <style jsx global>
         {`
@@ -178,6 +187,14 @@ function CheckoutForm() {
             color: #fff;
             cursor: pointer;
             background-color: #7795f8;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+              0 3px 6px rgba(0, 0, 0, 0.08);
+          }
+          button:disabled {
+            color: #fff;
+            cursor: pointer;
+            background-color: #f78c77;
             transform: translateY(-1px);
             box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
               0 3px 6px rgba(0, 0, 0, 0.08);

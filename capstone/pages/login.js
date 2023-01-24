@@ -38,23 +38,12 @@ function Login(props) {
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">
             <div className="header">
-              <img src="loginimage.png" width="100px"/>
+              <img src="loginimage.png" width="150px"/>
             </div>
             <section className="wrapper">
-              {Object.entries(error).length !== 0 &&
-                error.constructor === Object &&
-                error.message.map((error) => {
-                  return (
-                    <div
-                      key={error.messages[0].id}
-                      style={{ marginBottom: 10 }}
-                    >
                       <small style={{ color: "red" }}>
-                        {error.messages[0].message}
+                      {Object.keys(error).length > 0 ? "Invalid username/password" : ""}
                       </small>
-                    </div>
-                  );
-                })}
               <Form>
                 <fieldset disabled={loading}>
                   <FormGroup>
@@ -93,7 +82,7 @@ function Login(props) {
                             appContext.setUser(res.data.user);
                           })
                           .catch((error) => {
-                            //setError(error.response.data);
+                            setError(error.response.data);
                             setLoading(false);
                           });
                       }}

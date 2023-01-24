@@ -19,6 +19,7 @@ function Cart() {
   const renderItems = ()=>{
   let {items} = cart;
    console.log(`items: ${JSON.stringify(items)}`)
+   let cartNotEmpty = items && items.length;
     if(items && items.length){
       var itemList = cart.items.map((item) => {
           if (item.quantity > 0) {
@@ -87,7 +88,10 @@ const checkoutItems = ()=>{
     </div>
   )}
 
-// return Cart
+const renderCart = () => {
+  let {items} = cart;
+  let cartNotEmpty = items && items.length;
+  if(cartNotEmpty){
   return (
     <div>
       <h1> Cart</h1>
@@ -124,6 +128,17 @@ const checkoutItems = ()=>{
         }
       `}</style>
     </div>
+  )
+      }
+      else {
+        return <h3>Your Cart is Empty</h3>
+      }
+}
+
+
+// return Cart
+  return (
+      renderCart()
   );
 }
 export default Cart;

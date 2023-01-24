@@ -77,7 +77,7 @@ const GET_RESTAURANT_DISHES = gql`
         </>
         )}
         else{
-          return <h1> No Dishes</h1>
+          return <h3> Please select a restaurant with dishes...</h3>
         }
     }
     export default Dishes
