@@ -20,6 +20,7 @@ export const registerUser = (username, email, password) => {
         //set token response from Strapi for server validation
         Cookie.set("token", res.data.jwt);
         Cookie.set("username", res.data.user.username)
+        Cookie.set("userid", res.data.user.id);
         //resolve the promise to set loading to false in SignUp form
         resolve(res);
         //redirect back to home page for restaurance selection
@@ -44,7 +45,8 @@ export const login = (identifier, password) => {
       .then((res) => {
         //set token response from Strapi for server validation
         Cookie.set("token", res.data.jwt);
-        Cookie.set("username", res.data.user.username)
+        Cookie.set("username", res.data.user.username);
+        Cookie.set("userid", res.data.user.id);
         //resolve the promise to set loading to false in SignUp form
         resolve(res);
         //redirect back to home page for restaurance selection
