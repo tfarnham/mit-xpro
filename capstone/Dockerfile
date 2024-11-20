@@ -1,15 +1,18 @@
-FROM node:12
-ENV PORT 3000
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-# Installing dependencies
-COPY package*.json /usr/src/app/
+FROM node:14-slim
+
+# Step 3.1 - Add working directory
+WORKDIR /app
+# Step 3.2 - Copy npm dependencies
+COPY package-lock.json /app/package-lock.json
+COPY package.json /app/package.json
+# Step 3.3 - Install dependencies
 RUN npm install
-# Copying source files
-COPY . /usr/src/app
-# Building app
-RUN npm run build 
+# Copy app source code
+
+COPY . .
+
+#Expose port and start the application
+
 EXPOSE 3000
-# Running the app
-CMD "npm" "run" "dev"
+
+CMD ["npm", "start"]

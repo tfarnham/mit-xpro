@@ -7,6 +7,14 @@
   },
   "poweredBy": {
     "enabled": true,
-    "value": "Strapi <strapi.io>"
-  }
+    "value": "Strapi <strapi>"
+  },
+  "Access-Control-Allow-Credentials" :{
+    "value": "true" },
+  "Access-Control-Allow-Origin": {
+    "value": "*" },
+  "Access-Control-Allow-Methods": {
+    "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+  "Access-Control-Allow-Headers":{
+    "value": "X-CSRF-Token, X-Requested-With"}
 }
